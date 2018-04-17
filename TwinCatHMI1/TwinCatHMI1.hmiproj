@@ -49,22 +49,19 @@
     <PlatformTarget>TwinCAT HMI</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEventDependsOn>
-    </PreBuildEventDependsOn>
+    <PreBuildEventDependsOn></PreBuildEventDependsOn>
   </PropertyGroup>
   <Target Name="PreBuildEvent" Condition="'$(PreBuildEvent)'!=''" DependsOnTargets="$(PreBuildEventDependsOn)">
     <Exec WorkingDirectory="$(OutDir)" Command="$(PreBuildEvent)" />
   </Target>
   <PropertyGroup>
-    <PostBuildEventDependsOn>
-    </PostBuildEventDependsOn>
+    <PostBuildEventDependsOn></PostBuildEventDependsOn>
   </PropertyGroup>
   <Target Name="PostBuildEvent" Condition="'$(PostBuildEvent)' != '' and ('$(RunPostBuildEvent)'=='Always' or '$(RunPostBuildEvent)'=='OnOutputUpdated')" DependsOnTargets="$(PostBuildEventDependsOn)">
     <Exec WorkingDirectory="$(OutDir)" Command="$(PostBuildEvent)" />
   </Target>
   <!-- Bugitem 24108 -->
-  <Target Name="GetFrameworkPaths">
-  </Target>
+  <Target Name="GetFrameworkPaths"></Target>
   <PropertyGroup>
     <BuildDependsOn>
 			Validate;
@@ -75,10 +72,8 @@
   </PropertyGroup>
   <Target Name="Build" DependsOnTargets="$(BuildDependsOn)" />
   <Target Name="CoreBuild">
-    <TcHmiMSBuild.Publish.TcHmiBuild TaskAction="Clean" ProjectDirectory="$(TcHmi_ProjectDirectory)" OutputPath="$(OutputPath)">
-    </TcHmiMSBuild.Publish.TcHmiBuild>
-    <TcHmiMSBuild.Publish.TcHmiBuild TaskAction="Build" ProjectDirectory="$(TcHmi_ProjectDirectory)" OutputPath="$(OutputPath)" References="@(TcHmiReference)">
-    </TcHmiMSBuild.Publish.TcHmiBuild>
+    <TcHmiMSBuild.Publish.TcHmiBuild TaskAction="Clean" ProjectDirectory="$(TcHmi_ProjectDirectory)" OutputPath="$(OutputPath)"></TcHmiMSBuild.Publish.TcHmiBuild>
+    <TcHmiMSBuild.Publish.TcHmiBuild TaskAction="Build" ProjectDirectory="$(TcHmi_ProjectDirectory)" OutputPath="$(OutputPath)" References="@(TcHmiReference)"></TcHmiMSBuild.Publish.TcHmiBuild>
     <!--
 		<TcHmiMSBuildPkgMgt.TcHmiBuild TaskAction="Pack" OutputPath="$(TcHmi_ProjectDirectory)\$(OutputPath)" ProjectName="$(Name)" ProjectGuid="$(ProjectGuid)" ProjectType="8">
 		</TcHmiMSBuildPkgMgt.TcHmiBuild>
@@ -88,8 +83,7 @@
     </TcHmiMSBuild.Publish.TcHmiGenerator>
     <Message Text="Generating the Default.html within OutputPath('$(OutputPath)'): $(TaskResult0)" />
   </Target>
-  <Target Name="ReBuild" DependsOnTargets="Clean; Build">
-  </Target>
+  <Target Name="ReBuild" DependsOnTargets="Clean; Build"></Target>
   <Target Name="Clean" DependsOnTargets="BaseClean" />
   <ItemGroup>
     <Folder Include=".hmipkgs" />
