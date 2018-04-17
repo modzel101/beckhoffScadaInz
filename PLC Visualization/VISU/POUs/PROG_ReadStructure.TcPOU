@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+  <POU Name="PROG_ReadStructure" Id="{f8481555-266d-4db3-b371-60276b578e19}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PROG_ReadStructure
+VAR
+	fbSqlResult : FB_SQLResult(sNetID := '', tTimeout := T#5S);
+	nState : INT := 0;
+
+	aReadStruct2 : ARRAY[0..9] OF ST_Record;
+	aReadStruct3 : ST_Record;
+	aReadStruct4 : ST_Record;
+	aReadStruct5 : ST_Record;
+	
+	fbPLCDBRead : FB_PLCDBRead (sNetID := '', tTimeout := T#5S);
+	
+	fbPLCDBWrite    :  FB_PLCDBWrite(sNetID := '', tTimeout := T#5S);
+	ColumnNames : ARRAY[0..3] OF STRING(50);
+	res : Tc3_EventLogger.I_TcResultEvent;
+	res2 : UDINT;
+	res3 : WSTRING(255);
+	res4 : T_MaxString;
+	res5 : WSTRING(255);
+	res6 : E_Severity;
+	
+	
+	bSetParameter : BOOL := TRUE;
+	nCount: INT;
+	
+	fbPLCDBCmd       : FB_PLCDBCmd(sNetID := '', tTimeout := T#5S);
+	
+	 sCmd             : STRING (1000); 
+	 nRecords         : UDINT := 1;
+	// myStruct         : ST_DataAll;
+	fbTimer : TON := (PT:=T#2S);
+	
+	startIndex: INT := 4;
+	
+	sCzas : STRING;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+IF bSetParameter THEN
+	bSetParameter := FALSE;
+	// get values from internal tc db srv storage 
+	ColumnNames[0] := 'ID';
+	ColumnNames[1] := 'Timestamp';
+	ColumnNames[2] := 'Message';
+	aReadStruct4.nID := 11;
+	aReadStruct4.rSinValue := 666;
+	aReadStruct4.tTimestamp := DT#1970-01-01-00:00;
+	
+	nState := 20;
+	nCount := 0;
+END_IF
+
+
+fbTimer(IN:=TRUE);
+IF fbTimer.Q THEN // publish new payload every second
+	fbTimer(IN:=FALSE);
+	startIndex := startIndex+1;
+	nState := 20;
+	
+END_IF
+
+
+// set command with placeholder
+sCmd := 'SELECT ID,	Timestamp,	Message FROM 	table4_autoIncrement';
+//nState := 20;
+// call functionblock
+
+IF nState = 20 THEN
+	IF fbPLCDBCmd.ExecuteDataReturn(
+		hDBID:= 1, 
+		pExpression:= ADR(sCmd), 
+		cbExpression:= SIZEOF(sCmd), 
+		pData:= 0, 
+		cbData:= 0, 
+		pParameter:= 0, 
+		cbParameter:= 0,
+		nStartIndex:= nRecords-1 , 
+		nRecordCount:= 10, 
+		pReturnData:= ADR(aReadStruct5), 
+		cbReturnData:= SIZEOF(aReadStruct5), 
+		pRecords:= ADR(nRecords)) 
+	THEN
+		IF fbPLCDBCmd.bError THEN
+			nState := 255; 
+		ELSE
+			aReadStruct3 := aReadStruct5;
+			sCzas := DT_TO_STRING(aReadStruct3.tTimestamp);
+			nState := 10;
+		END_IF
+	END_IF
+END_IF
+
+
+
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="PROG_ReadStructure">
+      <LineId Id="77" Count="0" />
+      <LineId Id="128" Count="0" />
+      <LineId Id="130" Count="1" />
+      <LineId Id="149" Count="7" />
+      <LineId Id="148" Count="0" />
+      <LineId Id="145" Count="0" />
+      <LineId Id="129" Count="0" />
+      <LineId Id="285" Count="0" />
+      <LineId Id="98" Count="0" />
+      <LineId Id="265" Count="2" />
+      <LineId Id="288" Count="0" />
+      <LineId Id="291" Count="0" />
+      <LineId Id="290" Count="0" />
+      <LineId Id="289" Count="0" />
+      <LineId Id="210" Count="0" />
+      <LineId Id="217" Count="1" />
+      <LineId Id="243" Count="0" />
+      <LineId Id="220" Count="1" />
+      <LineId Id="284" Count="0" />
+      <LineId Id="257" Count="0" />
+      <LineId Id="222" Count="2" />
+      <LineId Id="250" Count="3" />
+      <LineId Id="225" Count="0" />
+      <LineId Id="230" Count="8" />
+      <LineId Id="287" Count="0" />
+      <LineId Id="318" Count="0" />
+      <LineId Id="239" Count="1" />
+      <LineId Id="211" Count="0" />
+      <LineId Id="258" Count="0" />
+      <LineId Id="293" Count="0" />
+      <LineId Id="313" Count="0" />
+      <LineId Id="292" Count="0" />
+      <LineId Id="286" Count="0" />
+      <LineId Id="280" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

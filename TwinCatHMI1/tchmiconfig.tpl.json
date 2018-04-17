@@ -1,0 +1,34 @@
+﻿{
+    "basePath": "./Libraries",
+    "locale": "en-US",
+    "scaleMode": 0,
+    "scaleModeRealValue": "",
+    "startupView": "Desktop.view",
+    "tcHmiServer": {
+        "websocketIntervalTime": 200
+    },
+    "userControls": [ ],
+    "userFunctions": [ ],
+    "content": [ ],
+    "views": [ 
+        {
+			"url": "Desktop.view",
+			"preload": false
+		}
+    ],
+	"symbols": {
+		"internal": { }
+	},
+	"trigger": null,
+    "actionTemplates": null,
+    "languages": {
+        "de-DE": "Localization\\de-DE.localization",
+        "en-US": "Localization\\en-US.localization"
+    },
+    "creatorSettings": {
+        "viewport": {
+            "defaultWidth": 800,
+            "defaultHeight": 600
+        }
+    }
+}

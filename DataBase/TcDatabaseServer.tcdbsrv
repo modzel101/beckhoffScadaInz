@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<ServerSettings>
+  <TargetNetID>127.0.0.1.1.1</TargetNetID>
+  <LogMode>2</LogMode>
+  <LogPath>C:\Users\W7 OPC UA 32bit\Desktop</LogPath>
+  <LogMaxLength>10</LogMaxLength>
+  <Impersonate>True</Impersonate>
+  <DBNULLAllowed>True</DBNULLAllowed>
+  <DBCommandTimeout>30</DBCommandTimeout>
+  <DBConnectionTimeout>15</DBConnectionTimeout>
+  <MaxByteArrayLength>256</MaxByteArrayLength>
+  <MaxStringLength>256</MaxStringLength>
+  <WSTRINGSupportActive>False</WSTRINGSupportActive>
+  <TcDbSrvProject>
+    <tcdbsrvdbCompile Include="TcDatabaseServer\DB\DB.tcdbsrvdb" />
+  </TcDbSrvProject>
+</ServerSettings>

@@ -1,0 +1,18 @@
+{
+    "RUNTIMES": {
+        "PLC1": {
+            "ENABLED": true,
+            "IPADDR": "127.0.0.1",
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 851,
+            "SYMBOLS": {}
+        },
+        "TcSysService": {
+            "ENABLED": false,
+            "IPADDR": "127.0.0.1",
+            "NETID": "127.0.0.1.1.1",
+            "PORT": 10000,
+            "SYMBOLS": {}
+        }
+    }
+}

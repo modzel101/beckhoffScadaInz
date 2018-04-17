@@ -1,0 +1,13 @@
+Id;Default
+233;%
+883;%2.5f
+242;%f
+247;%s
+410;%t[$'Last update:$' ddd MMM dd.MM.yy $'at$' HH:mm:ss]
+688;%t[$'Last update:$'dd.MM.yy $'at$' HH:mm:ss]
+923;Czas: %s
+29;d
+16;f
+295;ID: %d
+193;LABEL
+483;PROG_ReadStructure.aReadStruct2.tTimestamp

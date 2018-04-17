@@ -1,0 +1,12 @@
+﻿<div id="Desktop" data-tchmi-view="" data-tchmi-type="tchmi-view" 
+     data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="1920" data-tchmi-height="1080"
+     data-tchmi-background-image="Images/Background.png"
+     data-tchmi-background-image-height="100" data-tchmi-background-image-width="100" data-tchmi-background-image-height-unit="%" data-tchmi-background-image-width-unit="%">
+
+    <div id="ViewDesktopBeckhoffLogo" data-tchmi-type="tchmi-image" data-tchmi-image="" 
+         data-tchmi-src="Images/Beckhoff_Logo.svg" 
+         data-tchmi-width="194" data-tchmi-height="57" data-tchmi-left="20" data-tchmi-top="20">
+
+    </div>
+
+</div>
