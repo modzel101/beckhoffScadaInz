@@ -9,4 +9,12 @@
 
     </div>
 
+    <div id="TcHmiRegion" data-tchmi-type="tchmi-region" data-tchmi-region="" data-tchmi-height="668" data-tchmi-height-unit="px" data-tchmi-left="2" data-tchmi-left-unit="px" data-tchmi-top="107" data-tchmi-top-unit="px" data-tchmi-width="1915" data-tchmi-width-unit="px">
+
+    </div>
+
+    <div id="TcHmiImage" data-tchmi-type="tchmi-image" data-tchmi-image="" data-tchmi-height="435" data-tchmi-height-unit="px" data-tchmi-left="692" data-tchmi-left-unit="px" data-tchmi-src="Images/duda.jpg" data-tchmi-top="213" data-tchmi-top-unit="px" data-tchmi-width="433" data-tchmi-width-unit="px">
+
+    </div>
+
 </div>
